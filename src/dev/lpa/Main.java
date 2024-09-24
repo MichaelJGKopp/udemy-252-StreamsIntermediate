@@ -42,6 +42,6 @@ public class Main {
 //          .mapToObj("%.2f"::formatted);
 //      .boxed()
 //      .map("%.2f"::formatted);
-//    stream.forEach(System.out::println);
+    stream.forEach(System.out::println);
   }
 }
