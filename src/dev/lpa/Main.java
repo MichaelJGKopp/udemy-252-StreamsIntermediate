@@ -1,5 +1,6 @@
 package dev.lpa;
 
+import java.util.Comparator;
 import java.util.Random;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -32,10 +33,12 @@ public class Main {
     int seatsInRow = 10;
     var stream = Stream.iterate(1, i -> i <= maxSeats, i -> i + 1)
       .map(i -> new Seat((char) ('A' + i / seatsInRow), i % seatsInRow + 1))
-      .mapToDouble(Seat::price)
+//      .mapToDouble(Seat::price)
+        .sorted(Comparator.comparing(Seat::price)
+          .thenComparing(Seat::toString));
 //          .mapToObj("%.2f"::formatted);
-      .boxed()
-      .map("%.2f"::formatted);
+//      .boxed()
+//      .map("%.2f"::formatted);
     stream.forEach(System.out::println);
   }
 }
